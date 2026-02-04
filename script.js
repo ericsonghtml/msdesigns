@@ -9,6 +9,9 @@ const projects = [
       "A contemporary workplace concept centered on comfort, flexibility, and human-scale detail. Designed with restorative zones, warm materials, and clear circulation to support focused work without feeling sterile.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
+      "assets/next_office_1.jpg",
+      "assets/next_office_2.jpg",
+      "assets/next_office_3.jpg"
       "assets/project-next.jpg",
       "assets/project-next.jpg",
       "assets/project-next.jpg"
@@ -23,6 +26,9 @@ const projects = [
       "A lounge concept that balances elevated luxury with grounded warmth. Material choices and detailing are inspired by brand heritage while maintaining a calm, inviting atmosphere for travelers.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
+      "assets/hermes_airport_lounge_1.jpg",
+      "assets/hermes_airport_lounge_2.jpg",
+      "assets/hermes_airport_lounge_3.jpg"
       "assets/project-hermes.jpg",
       "assets/project-hermes.jpg",
       "assets/project-hermes.jpg"
@@ -37,6 +43,9 @@ const projects = [
       "A residential concept blending mid-century inspired detailing with clean modern updates. The focus is cohesive material rhythm, functional layouts, and a comfortable, lived-in feel.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
+      "assets/mid_century_manor_1.jpg",
+      "assets/mid_century_manor_2.jpg",
+      "assets/mid_century_manor_3.jpg"
       "assets/project-midcentury.jpg",
       "assets/project-midcentury.jpg",
       "assets/project-midcentury.jpg"
@@ -99,6 +108,17 @@ function setupModal() {
   const tools = $("#modalTools");
 
   function openProject(p) {
+    media.innerHTML = `
+      <div class="carousel" data-carousel>
+        <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
+        <div class="carousel-track">
+          ${p.images.map((img, index) => `
+            <div class="carousel-slide" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
+          `).join("")}
+        </div>
+        <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
+      </div>
+    `;
     media.innerHTML = p.images.map((img, index) => `
       <div class="modal-image" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
     `).join("");
@@ -109,6 +129,7 @@ function setupModal() {
 
     tools.innerHTML = p.tools.map(t => `<span class="pill">${t}</span>`).join("");
     modal.showModal();
+    setupCarousel(media.querySelector(".carousel"));
   }
 
   function closeModal() {
@@ -193,6 +214,48 @@ function setupMobileNav() {
   }));
 }
 
+function setupCarousel(carousel) {
+  if (!carousel) return;
+  const track = $(".carousel-track", carousel);
+  const prev = $(".carousel-btn.prev", carousel);
+  const next = $(".carousel-btn.next", carousel);
+  if (!track || !prev || !next) return;
+
+  function updateButtons() {
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    prev.disabled = track.scrollLeft <= 0;
+    next.disabled = track.scrollLeft >= maxScrollLeft - 1;
+  }
+
+  function scrollBySlide(direction) {
+    track.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+  }
+
+  prev.addEventListener("click", () => scrollBySlide(-1));
+  next.addEventListener("click", () => scrollBySlide(1));
+  track.addEventListener("scroll", () => requestAnimationFrame(updateButtons));
+
+  updateButtons();
+}
+
+function setupPageCarousels() {
+  $$("[data-carousel]").forEach((carousel) => {
+    const images = carousel.dataset.images;
+    if (images) {
+      carousel.innerHTML = `
+        <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
+        <div class="carousel-track">
+          ${images.split(",").map((img, index) => `
+            <div class="carousel-slide" role="img" aria-label="Current project image ${index + 1}" style="background-image:url('${img.trim()}')"></div>
+          `).join("")}
+        </div>
+        <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
+      `;
+    }
+    setupCarousel(carousel);
+  });
+}
+
 // ====== Init ======
 setYear();
 renderProjects(projects);
@@ -201,3 +264,4 @@ setupModal();
 setupCopyEmail();
 setupActiveNav();
 setupMobileNav();
+setupPageCarousels();

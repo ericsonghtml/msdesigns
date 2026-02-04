@@ -70,6 +70,10 @@ color: var(--ink);
 .brand-logo{
   width:34px;
   height:34px;
+  border-radius: 0;
+  object-fit: cover;
+  border: none;
+  box-shadow: none;
   border-radius: 12px;
   object-fit: cover;
   border: 1px solid rgba(111,119,95,.25);
@@ -350,6 +354,8 @@ color: var(--ink);
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: 0 12px 30px rgba(31,36,32,.08);
+  display:grid;
+  gap: 14px;
 }
 
 /* ====== Contact + Footer ====== */
@@ -420,6 +426,35 @@ color: var(--ink);
   gap: 18px;
   padding: 8px 6px 6px;
 }
+.modal-media{ display:block; }
+.modal-content{ padding: 8px; }
+.modal-content h3{ margin: 10px 0 6px; font-size: 1.6rem; }
+.modal-content p{ margin: 0 0 10px; line-height:1.7; }
+
+/* ====== Carousel ====== */
+.carousel{
+  position: relative;
+}
+.carousel-track{
+  display:flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+.carousel-track::-webkit-scrollbar{
+  height: 6px;
+}
+.carousel-track::-webkit-scrollbar-thumb{
+  background: rgba(139,147,123,.35);
+  border-radius: 999px;
+}
+.carousel-slide{
+  min-width: 100%;
+  height: 320px;
+  border-radius: 18px;
+  border:1px solid var(--line);
 .modal-media{
   display:grid;
   gap: 16px;
@@ -431,10 +466,30 @@ color: var(--ink);
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
+  scroll-snap-align: start;
 }
-.modal-content{ padding: 8px; }
-.modal-content h3{ margin: 10px 0 6px; font-size: 1.6rem; }
-.modal-content p{ margin: 0 0 10px; line-height:1.7; }
+.carousel-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  background: rgba(251,250,246,.9);
+  color: var(--olive-brown);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 8px 16px rgba(31,36,32,.12);
+}
+.carousel-btn.prev{ left: 12px; }
+.carousel-btn.next{ right: 12px; }
+.carousel-btn:disabled{
+  opacity: .4;
+  cursor: default;
+}
 
 /* ====== Responsive ====== */
 @media (max-width: 980px){
@@ -443,6 +498,7 @@ color: var(--ink);
   .timeline{ position: static; }
   .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .modal-body{ grid-template-columns: 1fr; }
+  .carousel-slide{ height: 260px; }
   .modal-image{ height: 240px; }
 }
 @media (max-width: 720px){
