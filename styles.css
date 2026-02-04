@@ -70,9 +70,7 @@ body{
 .brand-logo{
   width:34px;
   height:34px;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 12px;
   object-fit: cover;
 }
 .brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
