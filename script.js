@@ -9,11 +9,6 @@ const projects = [
       "A contemporary workplace concept centered on comfort, flexibility, and human-scale detail. Designed with restorative zones, warm materials, and clear circulation to support focused work without feeling sterile.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
-      "assets/next_office_1.jpg",
-      "assets/next_office_2.jpg",
-      "assets/next_office_3.jpg"
-      "assets/project-next.jpg",
-      "assets/project-next.jpg",
       "assets/project-next.jpg"
     ]
   },
@@ -26,11 +21,6 @@ const projects = [
       "A lounge concept that balances elevated luxury with grounded warmth. Material choices and detailing are inspired by brand heritage while maintaining a calm, inviting atmosphere for travelers.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
-      "assets/hermes_airport_lounge_1.jpg",
-      "assets/hermes_airport_lounge_2.jpg",
-      "assets/hermes_airport_lounge_3.jpg"
-      "assets/project-hermes.jpg",
-      "assets/project-hermes.jpg",
       "assets/project-hermes.jpg"
     ]
   },
@@ -43,11 +33,6 @@ const projects = [
       "A residential concept blending mid-century inspired detailing with clean modern updates. The focus is cohesive material rhythm, functional layouts, and a comfortable, lived-in feel.",
     tools: ["Revit", "Enscape", "Photoshop"],
     images: [
-      "assets/mid_century_manor_1.jpg",
-      "assets/mid_century_manor_2.jpg",
-      "assets/mid_century_manor_3.jpg"
-      "assets/project-midcentury.jpg",
-      "assets/project-midcentury.jpg",
       "assets/project-midcentury.jpg"
     ]
   }
@@ -108,17 +93,6 @@ function setupModal() {
   const tools = $("#modalTools");
 
   function openProject(p) {
-    media.innerHTML = `
-      <div class="carousel" data-carousel>
-        <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
-        <div class="carousel-track">
-          ${p.images.map((img, index) => `
-            <div class="carousel-slide" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
-          `).join("")}
-        </div>
-        <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
-      </div>
-    `;
     media.innerHTML = p.images.map((img, index) => `
       <div class="modal-image" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
     `).join("");
@@ -129,7 +103,6 @@ function setupModal() {
 
     tools.innerHTML = p.tools.map(t => `<span class="pill">${t}</span>`).join("");
     modal.showModal();
-    setupCarousel(media.querySelector(".carousel"));
   }
 
   function closeModal() {

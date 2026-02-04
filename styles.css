@@ -7,6 +7,7 @@
   --green: #8e937d; /* deeper olive */
   --brown: #5e5343;       /* near-black warm */
   --olive-brown: #625a3f;     /* muted text */
+  --sage-dark: #6f775f;
   /* System */
   --ink: var(--brown);
   --muted: rgba(94, 83, 67, .82);
@@ -22,12 +23,11 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(900px 400px at 70% 0%, rgba(142,147,125,.18), transparent 60%),
+    radial-gradient(700px 300px at 10% 10%, rgba(201,190,171,.22), transparent 60%),
+    var(--bg);
   color: var(--ink);
-background:
-  radial-gradient(900px 400px at 70% 0%, rgba(142,147,125,.18), transparent 60%),
-  radial-gradient(700px 300px at 10% 10%, rgba(201,190,171,.22), transparent 60%),
-  var(--bg);
-color: var(--ink);
 }
 
 .serif{ font-family: "Fraunces", serif; }
@@ -66,18 +66,21 @@ color: var(--ink);
   gap:10px;
   text-decoration:none;
   color:inherit;
+  border: none;
+  padding: 0;
+  background: transparent;
 }
 .brand-logo{
-  width:34px;
-  height:34px;
+  width:120px;
+  height:72px;
+  border: 0;
   border-radius: 0;
-  object-fit: cover;
-  border: none;
   box-shadow: none;
-  border-radius: 12px;
-  object-fit: cover;
-  border: 1px solid rgba(111,119,95,.25);
-  box-shadow: 0 10px 24px rgba(111,119,95,.25);
+  object-fit: contain;
+  object-position: center;
+  outline: none;
+  background: transparent;
+  display: block;
 }
 .brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
 
@@ -320,7 +323,7 @@ color: var(--ink);
 
 .grid{
   display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 .project{
@@ -331,18 +334,25 @@ color: var(--ink);
   box-shadow: 0 12px 30px rgba(31,36,32,.08);
   transition: transform .15s ease, box-shadow .15s ease;
   cursor:pointer;
+  display:block;
 }
 .project:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,36,32,.12); }
 .project-media{
-  height: 170px;
+  height: 260px;
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
 }
-.project-body{ padding: 14px; }
+.project-body{ padding: 16px 16px 0; }
 .project-title{ margin:0; font-size: 1.15rem; }
 .project-meta{ margin: 6px 0 0; color: var(--muted); line-height:1.6; font-size:.95rem; }
-.project-footer{ padding: 0 14px 14px; display:flex; flex-wrap:wrap; gap:8px; }
+.project-footer{
+  padding: 10px 16px 16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:flex-end;
+}
 
 .current-projects{
   display:grid;
@@ -426,10 +436,17 @@ color: var(--ink);
   gap: 18px;
   padding: 8px 6px 6px;
 }
-.modal-media{ display:block; }
 .modal-content{ padding: 8px; }
 .modal-content h3{ margin: 10px 0 6px; font-size: 1.6rem; }
 .modal-content p{ margin: 0 0 10px; line-height:1.7; }
+.modal-image{
+  border-radius: 18px;
+  border:1px solid var(--line);
+  height: 280px;
+  background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
+  background-size: cover;
+  background-position:center;
+}
 
 /* ====== Carousel ====== */
 .carousel{
@@ -455,18 +472,14 @@ color: var(--ink);
   height: 320px;
   border-radius: 18px;
   border:1px solid var(--line);
-.modal-media{
-  display:grid;
-  gap: 16px;
-}
-.modal-image{
-  border-radius: 18px;
-  border:1px solid var(--line);
-  height: 280px;
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
   scroll-snap-align: start;
+}
+.modal-media{
+  display:grid;
+  gap: 16px;
 }
 .carousel-btn{
   position: absolute;
@@ -496,10 +509,9 @@ color: var(--ink);
   .hero-grid{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
   .timeline{ position: static; }
-  .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid{ grid-template-columns: 1fr; }
   .modal-body{ grid-template-columns: 1fr; }
   .carousel-slide{ height: 260px; }
-  .modal-image{ height: 240px; }
 }
 @media (max-width: 720px){
   .nav-cta{ display:none; }
@@ -520,6 +532,8 @@ color: var(--ink);
   }
   .nav-links.open{ display:flex; }
   .grid{ grid-template-columns: 1fr; }
+  .project{ grid-template-columns: 1fr; }
+  .project-media{ min-height: 200px; }
   .hero-metrics{ grid-template-columns: 1fr; }
   .contact-bar{ flex-direction:column; align-items:flex-start; }
 }
