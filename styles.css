@@ -66,12 +66,18 @@ body{
   gap:10px;
   text-decoration:none;
   color:inherit;
+  border: none;
 }
 .brand-logo{
   width:34px;
   height:34px;
-  border-radius: 12px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   object-fit: cover;
+  outline: none;
+  background: transparent;
+  display: block;
 }
 .brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
 
