@@ -12,6 +12,9 @@ const projects = [
       "assets/next_office_1.jpg",
       "assets/next_office_2.jpg",
       "assets/next_office_3.jpg"
+      "assets/project-next.jpg",
+      "assets/project-next.jpg",
+      "assets/project-next.jpg"
     ]
   },
   {
@@ -26,6 +29,9 @@ const projects = [
       "assets/hermes_airport_lounge_1.jpg",
       "assets/hermes_airport_lounge_2.jpg",
       "assets/hermes_airport_lounge_3.jpg"
+      "assets/project-hermes.jpg",
+      "assets/project-hermes.jpg",
+      "assets/project-hermes.jpg"
     ]
   },
   {
@@ -40,6 +46,9 @@ const projects = [
       "assets/mid_century_manor_1.jpg",
       "assets/mid_century_manor_2.jpg",
       "assets/mid_century_manor_3.jpg"
+      "assets/project-midcentury.jpg",
+      "assets/project-midcentury.jpg",
+      "assets/project-midcentury.jpg"
     ]
   }
 ];
@@ -110,6 +119,9 @@ function setupModal() {
         <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
       </div>
     `;
+    media.innerHTML = p.images.map((img, index) => `
+      <div class="modal-image" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
+    `).join("");
     type.textContent = p.type === "commercial" ? "Commercial" : "Residential";
     title.textContent = p.title;
     meta.textContent = p.meta;
