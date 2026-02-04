@@ -74,6 +74,10 @@ color: var(--ink);
   object-fit: cover;
   border: none;
   box-shadow: none;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(111,119,95,.25);
+  box-shadow: 0 10px 24px rgba(111,119,95,.25);
 }
 .brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
 
@@ -353,17 +357,6 @@ color: var(--ink);
   display:grid;
   gap: 14px;
 }
-.current-project-media{
-  min-height: 260px;
-  border-radius: 18px;
-  border:1px solid var(--line);
-  background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
-  overflow: hidden;
-}
-.current-project-media .carousel-slide{
-  border-radius: 0;
-  border: none;
-}
 
 /* ====== Contact + Footer ====== */
 .contact{ padding-top: 30px; }
@@ -462,6 +455,14 @@ color: var(--ink);
   height: 320px;
   border-radius: 18px;
   border:1px solid var(--line);
+.modal-media{
+  display:grid;
+  gap: 16px;
+}
+.modal-image{
+  border-radius: 18px;
+  border:1px solid var(--line);
+  height: 280px;
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
@@ -498,6 +499,7 @@ color: var(--ink);
   .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .modal-body{ grid-template-columns: 1fr; }
   .carousel-slide{ height: 260px; }
+  .modal-image{ height: 240px; }
 }
 @media (max-width: 720px){
   .nav-cta{ display:none; }
