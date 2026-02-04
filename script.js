@@ -53,7 +53,9 @@ function renderProjects(list) {
 
   grid.innerHTML = list.map(p => `
     <article class="project" tabindex="0" role="button" aria-label="Open ${p.title}" data-id="${p.id}">
-      <div class="project-media" style="background-image:url('${p.images[0]}')"></div>
+      <div class="project-media">
+        <img class="project-image" src="${p.images[0]}" alt="${p.title} preview" />
+      </div>
       <div class="project-body">
         <h3 class="project-title serif">${p.title}</h3>
         <p class="project-meta">${p.meta}</p>
