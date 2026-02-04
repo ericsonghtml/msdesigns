@@ -8,7 +8,11 @@ const projects = [
     desc:
       "A contemporary workplace concept centered on comfort, flexibility, and human-scale detail. Designed with restorative zones, warm materials, and clear circulation to support focused work without feeling sterile.",
     tools: ["Revit", "Enscape", "Photoshop"],
-    image: "assets/project-next.jpg"
+    images: [
+      "assets/project-next.jpg",
+      "assets/project-next.jpg",
+      "assets/project-next.jpg"
+    ]
   },
   {
     id: "hermes-lounge",
@@ -18,7 +22,11 @@ const projects = [
     desc:
       "A lounge concept that balances elevated luxury with grounded warmth. Material choices and detailing are inspired by brand heritage while maintaining a calm, inviting atmosphere for travelers.",
     tools: ["Revit", "Enscape", "Photoshop"],
-    image: "assets/project-hermes.jpg"
+    images: [
+      "assets/project-hermes.jpg",
+      "assets/project-hermes.jpg",
+      "assets/project-hermes.jpg"
+    ]
   },
   {
     id: "midcentury-manor",
@@ -28,7 +36,11 @@ const projects = [
     desc:
       "A residential concept blending mid-century inspired detailing with clean modern updates. The focus is cohesive material rhythm, functional layouts, and a comfortable, lived-in feel.",
     tools: ["Revit", "Enscape", "Photoshop"],
-    image: "assets/project-midcentury.jpg"
+    images: [
+      "assets/project-midcentury.jpg",
+      "assets/project-midcentury.jpg",
+      "assets/project-midcentury.jpg"
+    ]
   }
 ];
 
@@ -47,7 +59,7 @@ function renderProjects(list) {
 
   grid.innerHTML = list.map(p => `
     <article class="project" tabindex="0" role="button" aria-label="Open ${p.title}" data-id="${p.id}">
-      <div class="project-media" style="background-image:url('${p.image}')"></div>
+      <div class="project-media" style="background-image:url('${p.images[0]}')"></div>
       <div class="project-body">
         <h3 class="project-title serif">${p.title}</h3>
         <p class="project-meta">${p.meta}</p>
@@ -87,7 +99,9 @@ function setupModal() {
   const tools = $("#modalTools");
 
   function openProject(p) {
-    media.style.backgroundImage = `url('${p.image}')`;
+    media.innerHTML = p.images.map((img, index) => `
+      <div class="modal-image" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
+    `).join("");
     type.textContent = p.type === "commercial" ? "Commercial" : "Residential";
     title.textContent = p.title;
     meta.textContent = p.meta;
@@ -187,4 +201,3 @@ setupModal();
 setupCopyEmail();
 setupActiveNav();
 setupMobileNav();
-
