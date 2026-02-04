@@ -72,8 +72,6 @@ body{
   height:34px;
   border-radius: 12px;
   object-fit: cover;
-  border: 1px solid rgba(111,119,95,.25);
-  box-shadow: 0 10px 24px rgba(111,119,95,.25);
 }
 .brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
 
