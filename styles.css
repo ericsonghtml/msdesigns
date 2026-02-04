@@ -1,14 +1,17 @@
 /* ====== Color system (matches your portfolio vibe) ======
    Update these if you want to tweak the exact scheme. */
 :root{
-  --bg: #F4F1EA;        /* warm cream */
-  --paper: #FBFAF6;     /* lighter card */
-  --sage: #8B937B;      /* muted green */
-  --sage-dark: #6F775F; /* deeper olive */
-  --ink: #1F2420;       /* near-black warm */
-  --muted: #5F685F;     /* muted text */
-  --line: rgba(31,36,32,.12);
-  --shadow: 0 18px 50px rgba(31,36,32,.12);
+  --bg: #ebeae6;        /* warm cream */
+  --paper: #eae3d8;     /* lighter card */
+  --beige-dark: #c9beab;      /* muted green */
+  --green: #8e937d; /* deeper olive */
+  --brown: #5e5343;       /* near-black warm */
+  --olive-brown: #625a3f;     /* muted text */
+  /* System */
+  --ink: var(--brown);
+  --muted: rgba(94, 83, 67, .82);
+  --line: rgba(94, 83, 67, .14);
+  --shadow: 0 18px 50px rgba(94, 83, 67, .14);
   --radius: 22px;
   --radius-sm: 14px;
   --max: 1120px;
@@ -20,9 +23,11 @@ body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink);
-  background: radial-gradient(900px 400px at 70% 0%, rgba(139,147,123,.18), transparent 60%),
-              radial-gradient(700px 300px at 10% 10%, rgba(111,119,95,.10), transparent 60%),
-              var(--bg);
+background:
+  radial-gradient(900px 400px at 70% 0%, rgba(142,147,125,.18), transparent 60%),
+  radial-gradient(700px 300px at 10% 10%, rgba(201,190,171,.22), transparent 60%),
+  var(--bg);
+color: var(--ink);
 }
 
 .serif{ font-family: "Fraunces", serif; }
@@ -67,7 +72,7 @@ body{
   background: linear-gradient(135deg, rgba(139,147,123,.95), rgba(111,119,95,.95));
   box-shadow: 0 10px 24px rgba(111,119,95,.25);
 }
-.brand-text{ letter-spacing:.12em; font-weight:600; color: var(--sage-dark); }
+.brand-text{ letter-spacing:.12em; font-weight:600; color: var(--olive-brown); }
 
 .nav-links{
   display:flex;
@@ -89,15 +94,15 @@ body{
 .nav-cta{ display:flex; gap:10px; align-items:center; }
 
 .btn{
-  border: 1px solid rgba(111,119,95,.55);
-  background: linear-gradient(180deg, rgba(111,119,95,.95), rgba(111,119,95,.85));
+  border: 1px solid rgba(142,147,125,.55);
+  background: linear-gradient(180deg, rgba(142,147,125,.98), rgba(142,147,125,.88));
   color: white;
   padding: 10px 14px;
   border-radius: 999px;
   text-decoration:none;
   font-weight:600;
   font-size: .95rem;
-  box-shadow: 0 10px 26px rgba(111,119,95,.20);
+  box-shadow: 0 10px 26px rgba(142,147,125,.22);
   transition: transform .15s ease, box-shadow .15s ease;
   cursor:pointer;
 }
@@ -164,7 +169,7 @@ body{
   margin-top: 12px;
 }
 .metric{
-  background: rgba(251,250,246,.70);
+  background: rgba(234,227,216,.72);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   padding: 12px 12px;
@@ -187,9 +192,9 @@ body{
   gap:8px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(111,119,95,.15);
-  border: 1px solid rgba(111,119,95,.20);
-  color: var(--sage-dark);
+  background: rgba(142,147,125,.16);
+  border: 1px solid rgba(142,147,125,.22);
+  color: var(--olive-brown);
   font-weight:600;
   width:fit-content;
 }
@@ -212,7 +217,7 @@ body{
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(251,250,246,.70);
+  background: rgba(234,227,216,.75);
 }
 
 /* ====== About ====== */
@@ -231,7 +236,7 @@ body{
   margin-top: 16px;
 }
 .card{
-  background: rgba(251,250,246,.70);
+  background: rgba(234,227,216,.72);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
@@ -243,11 +248,11 @@ body{
 .pill-row{ display:flex; flex-wrap:wrap; gap:8px; }
 .pill{
   font-size:.88rem;
-  background: rgba(139,147,123,.14);
-  border: 1px solid rgba(111,119,95,.18);
+  background: rgba(142,147,125,.16);
+  border: 1px solid rgba(142,147,125,.22);
   padding: 7px 10px;
   border-radius: 999px;
-  color: var(--sage-dark);
+  color: var(--olive-brown);
   font-weight:600;
 }
 
@@ -293,7 +298,7 @@ body{
 }
 .filter{
   border: 1px solid var(--line);
-  background: rgba(251,250,246,.70);
+  background: rgba(234,227,216,.72);
   border-radius: 999px;
   padding: 8px 12px;
   font-weight:600;
