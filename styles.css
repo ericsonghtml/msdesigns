@@ -67,10 +67,12 @@ body{
   text-decoration:none;
   color:inherit;
   border: none;
+  padding: 0;
+  background: transparent;
 }
 .brand-logo{
-  width:34px;
-  height:34px;
+  width:56px;
+  height:56px;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -429,6 +431,14 @@ body{
 .modal-content{ padding: 8px; }
 .modal-content h3{ margin: 10px 0 6px; font-size: 1.6rem; }
 .modal-content p{ margin: 0 0 10px; line-height:1.7; }
+.modal-image{
+  border-radius: 18px;
+  border:1px solid var(--line);
+  height: 280px;
+  background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
+  background-size: cover;
+  background-position:center;
+}
 
 /* ====== Carousel ====== */
 .carousel{

@@ -93,17 +93,9 @@ function setupModal() {
   const tools = $("#modalTools");
 
   function openProject(p) {
-    media.innerHTML = `
-      <div class="carousel" data-carousel>
-        <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
-        <div class="carousel-track">
-          ${p.images.map((img, index) => `
-            <div class="carousel-slide" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
-          `).join("")}
-        </div>
-        <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
-      </div>
-    `;
+    media.innerHTML = p.images.map((img, index) => `
+      <div class="modal-image" role="img" aria-label="${p.title} image ${index + 1}" style="background-image:url('${img}')"></div>
+    `).join("");
     type.textContent = p.type === "commercial" ? "Commercial" : "Residential";
     title.textContent = p.title;
     meta.textContent = p.meta;
@@ -111,7 +103,6 @@ function setupModal() {
 
     tools.innerHTML = p.tools.map(t => `<span class="pill">${t}</span>`).join("");
     modal.showModal();
-    setupCarousel(media.querySelector(".carousel"));
   }
 
   function closeModal() {
