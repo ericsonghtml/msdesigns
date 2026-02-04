@@ -71,12 +71,12 @@ body{
   background: transparent;
 }
 .brand-logo{
-  width:96px;
+  width:120px;
   height:72px;
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   outline: none;
   background: transparent;
@@ -334,21 +334,25 @@ body{
   box-shadow: 0 12px 30px rgba(31,36,32,.08);
   transition: transform .15s ease, box-shadow .15s ease;
   cursor:pointer;
-  display:grid;
-  gap: 14px;
-  grid-template-columns: 1fr;
+  display:block;
 }
 .project:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,36,32,.12); }
 .project-media{
-  height: 220px;
+  height: 260px;
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
 }
-.project-body{ padding: 14px; }
+.project-body{ padding: 16px 16px 0; }
 .project-title{ margin:0; font-size: 1.15rem; }
 .project-meta{ margin: 6px 0 0; color: var(--muted); line-height:1.6; font-size:.95rem; }
-.project-footer{ padding: 0 14px 14px; display:flex; flex-wrap:wrap; gap:8px; }
+.project-footer{
+  padding: 10px 16px 16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:flex-end;
+}
 
 .current-projects{
   display:grid;
