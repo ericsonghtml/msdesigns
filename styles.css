@@ -71,12 +71,13 @@ body{
   background: transparent;
 }
 .brand-logo{
-  width:56px;
-  height:56px;
+  width:72px;
+  height:72px;
   border: 0;
   border-radius: 0;
   box-shadow: none;
   object-fit: cover;
+  object-position: center;
   outline: none;
   background: transparent;
   display: block;
@@ -322,7 +323,7 @@ body{
 
 .grid{
   display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 .project{
@@ -333,10 +334,13 @@ body{
   box-shadow: 0 12px 30px rgba(31,36,32,.08);
   transition: transform .15s ease, box-shadow .15s ease;
   cursor:pointer;
+  display:grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
 }
 .project:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,36,32,.12); }
 .project-media{
-  height: 170px;
+  height: 100%;
+  min-height: 180px;
   background: linear-gradient(180deg, rgba(139,147,123,.08), rgba(111,119,95,.18));
   background-size: cover;
   background-position:center;
@@ -501,7 +505,7 @@ body{
   .hero-grid{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
   .timeline{ position: static; }
-  .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid{ grid-template-columns: 1fr; }
   .modal-body{ grid-template-columns: 1fr; }
   .carousel-slide{ height: 260px; }
 }
@@ -524,6 +528,8 @@ body{
   }
   .nav-links.open{ display:flex; }
   .grid{ grid-template-columns: 1fr; }
+  .project{ grid-template-columns: 1fr; }
+  .project-media{ min-height: 200px; }
   .hero-metrics{ grid-template-columns: 1fr; }
   .contact-bar{ flex-direction:column; align-items:flex-start; }
 }
